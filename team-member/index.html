@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vivacity Team Slider</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+  <style>
+    :root {
+      --navy: #0c1c3f;
+      --primary: #0a6bff;
+      --muted: #697185;
+      --card-bg: #f7f9fc;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: #fff;
+      color: var(--navy);
+    }
+
+    .team-section {
+      padding: 4rem 0;
+    }
+
+    .section-label {
+      font-weight: 600;
+      color: var(--primary);
+      letter-spacing: 0.2em;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+    }
+
+    .team-title {
+      font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin: 0.5rem 0 2rem;
+    }
+
+    .team-card {
+      border-radius: 26px;
+      background: var(--card-bg);
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(12, 28, 63, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .team-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .team-card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+    }
+
+    .team-meta {
+      padding: 1.25rem;
+    }
+
+    .team-meta h5 {
+      margin-bottom: 0.15rem;
+      font-weight: 700;
+    }
+
+    .team-meta span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .exp-pill {
+      margin-top: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(10, 107, 255, 0.1);
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      background: rgba(12, 28, 63, 0.2);
+      opacity: 1;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: var(--primary);
+    }
+  </style>
+</head>
+<body>
+  <section class="team-section">
+    <div class="container text-center">
+      <span class="section-label">Our Team Member</span>
+      <h2 class="team-title">Meet Our Specialist This Doctor Meeting</h2>
+    </div>
+
+    <div class="container mt-4">
+      <div class="swiper team-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="team-card">
+              <img src="https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?auto=format&fit=crop&w=600&q=80" alt="Dr. Aaron Smith">
+              <div class="team-meta text-start">
+                <h5>Dr. Aaron Smith</h5>
+                <span>Chief Nephrologist</span>
+                <div class="exp-pill">15+ yrs Experience</div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="team-card">
+              <img src="https://images.unsplash.com/photo-1500674425229-f692875b0ab7?auto=format&fit=crop&w=600&q=80" alt="Dr. Elena Costa">
+              <div class="team-meta text-start">
+                <h5>Dr. Elena Costa</h5>
+                <span>Cardio Specialist</span>
+                <div class="exp-pill">12+ yrs Experience</div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="team-card">
+              <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=600&q=80" alt="Dr. Mia Patel">
+              <div class="team-meta text-start">
+                <h5>Dr. Mia Patel</h5>
+                <span>Dental Surgeon</span>
+                <div class="exp-pill">10+ yrs Experience</div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="team-card">
+              <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=600&q=80" alt="Dr. Yusuf Rahman">
+              <div class="team-meta text-start">
+                <h5>Dr. Yusuf Rahman</h5>
+                <span>Clinical Psychologist</span>
+                <div class="exp-pill">18+ yrs Experience</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination mt-4"></div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script>
+    new Swiper('.team-swiper', {
+      slidesPerView: 1.1,
+      spaceBetween: 24,
+      loop: true,
+      breakpoints: {
+        768: { slidesPerView: 2 },
+        1200: { slidesPerView: 3 },
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  </script>
+</body>
+</html>
+
