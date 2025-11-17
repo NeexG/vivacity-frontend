@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vivacity Testimonials</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+  <style>
+    :root {
+      --navy: #111f3c;
+      --muted: #6f7688;
+      --accent: #0a6bff;
+      --card-bg: #fff;
+      --section-bg: #f1f3f5;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: #fff;
+      color: var(--navy);
+    }
+
+    .testimonials-section {
+      padding: 4rem 0 5rem;
+      background: #fff;
+    }
+
+    .section-label {
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+
+    .testimonial-title {
+      font-weight: 800;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      margin: 0.5rem 0 0;
+    }
+
+    .hero-header {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .nav-controls {
+      display: inline-flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .nav-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      background: var(--accent);
+      box-shadow: 0 10px 25px rgba(10, 107, 255, 0.3);
+      color: #fff;
+      font-size: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .nav-btn:first-child {
+      background: #fff;
+      color: var(--accent);
+      box-shadow: 0 10px 25px rgba(17, 31, 60, 0.12);
+    }
+
+    .nav-btn:first-child:hover {
+      filter: brightness(0.98);
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.05);
+    }
+
+    @media (max-width: 992px) {
+      .hero-header {
+        text-align: center;
+      }
+
+      .nav-controls {
+        justify-content: center;
+      }
+    }
+
+    .testimonial-card {
+      background: var(--card-bg);
+      border-radius: 28px;
+      padding: 2rem;
+      box-shadow: 0 12px 24px rgba(17, 31, 60, 0.08);
+      position: relative;
+      min-height: 280px;
+    }
+
+    .client-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .client-meta img {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid rgba(10, 107, 255, 0.15);
+    }
+
+    .client-meta h6 {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .client-meta span {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .testimonial-card p {
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .rating {
+      margin-top: 1.25rem;
+      color: #f4b400;
+      font-size: 1rem;
+    }
+
+    .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      background: rgba(17, 31, 60, 0.2);
+      opacity: 1;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="hero-header flex-lg-row justify-content-between align-items-center text-center text-lg-start">
+        <div>
+          <span class="section-label">Our Testimonials</span>
+          <h2 class="testimonial-title">What Clients Say?</h2>
+        </div>
+        <div class="nav-controls">
+          <button class="nav-btn testimonial-prev" aria-label="Previous testimonial">&larr;</button>
+          <button class="nav-btn testimonial-next" aria-label="Next testimonial">&rarr;</button>
+        </div>
+      </div>
+    </div>
+    <div class="container mt-4">
+      <div class="swiper testimonial-swiper" style="padding: 1rem 0 2.5rem;">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <div class="client-meta">
+                <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=200&q=80" alt="Aaron Blake">
+                <div>
+                  <h6>Aaron Blake</h6>
+                  <span>Glenic CEO</span>
+                </div>
+              </div>
+              <p>“Vivacity’s nephrology team translated years of expertise into simple steps for my family. The digital updates and bedside manner are unmatched.”</p>
+              <div class="rating">★★★★★</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <div class="client-meta">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80" alt="Emily George">
+                <div>
+                  <h6>Emily George</h6>
+                  <span>Product Lead</span>
+                </div>
+              </div>
+              <p>“From admission to discharge, the staff communicated clearly. Telehealth follow-ups made my recovery entirely stress-free.”</p>
+              <div class="rating">★★★★★</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <div class="client-meta">
+                <img src="https://images.unsplash.com/photo-1504593811423-6dd665756598?auto=format&fit=crop&w=200&q=80" alt="Nora Patel">
+                <div>
+                  <h6>Nora Patel</h6>
+                  <span>Startup Founder</span>
+                </div>
+              </div>
+              <p>“I’ve never experienced such coordinated care. Specialists, nutritionists, and therapists worked together seamlessly.”</p>
+              <div class="rating">★★★★★</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="testimonial-card">
+              <div class="client-meta">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80" alt="Jordan Mills">
+                <div>
+                  <h6>Jordan Mills</h6>
+                  <span>Wellness Coach</span>
+                </div>
+              </div>
+              <p>“Their preventive programs helped my clients stay ahead of chronic issues. The Vivacity app makes sharing reports effortless.”</p>
+              <div class="rating">★★★★★</div>
+            </div>
+          </div>
+          
+        </div>
+        <div class="swiper-pagination mt-4"></div>
+      </div>
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script>
+    new Swiper('.testimonial-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 24,
+      breakpoints: {
+        768: { slidesPerView: 2 },
+        1200: { slidesPerView: 3 },
+      },
+      navigation: {
+        nextEl: '.testimonial-next',
+        prevEl: '.testimonial-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  </script>
+</body>
+</html>
+
