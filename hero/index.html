@@ -10,63 +10,164 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
   <style>
-    :root {
-      --primary-blue: #0a73ff;
-      --navy: #081731;
-      --muted: #6c7587;
-      --accent: #002b8b;
-      --bg-light: #f7fbff;
-    }
 
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: var(--bg-light);
+      background-color: #f2f6fb;
+      color: #081731;
     }
 
     .hero-section {
       position: relative;
       overflow: hidden;
+      padding: 0;
+      min-height: 600px;
+      height: 600px;
+      background: linear-gradient(120deg, #021033 0%, #041f52 60%, #062e73 100%);
+      color: #f5f7ff;
     }
 
     .hero-swiper {
       width: 100%;
-      min-height: 520px;
+      padding: 0;
+      min-height: 600px;
+      height: 600px;
     }
 
     .hero-slide {
+      position: relative;
       display: flex;
       align-items: center;
-      padding: 4rem 0;
+      padding: clamp(2rem, 4vw, 3.5rem) 0;
+      border-radius: 0;
+      background-color: #031637;
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+      box-shadow: none;
+      overflow: hidden;
+      width: 100%;
+      min-height: 600px;
+      height: 600px;
+      max-height: 900px;
+      isolation: isolate;
+    }
+
+    .hero-slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(2, 16, 48, 0.88) 0%, rgba(3, 46, 106, 0.72) 55%, rgba(5, 64, 145, 0.58) 100%);
+      z-index: 1;
+    }
+
+    .hero-slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .hero-slide.hero-bg-1 {
+      background-image: url("https://images.pexels.com/photos/1170979/pexels-photo-1170979.jpeg?auto=compress&cs=tinysrgb&w=1920");
+    }
+
+    .hero-slide.hero-bg-2 {
+      background-image: url("https://images.pexels.com/photos/4173251/pexels-photo-4173251.jpeg?auto=compress&cs=tinysrgb&w=1920");
+    }
+
+    .hero-slide .container-fluid {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: none;
+      padding-left: clamp(1.25rem, 4vw, 4.5rem);
+      padding-right: clamp(1.25rem, 4vw, 4.5rem);
+    }
+
+    .hero-content {
+      max-width: min(640px, 50vw);
+    }
+
+    .hero-tag {
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      color: rgba(2, 196, 217, 0.85);
+      margin-bottom: 1rem;
+      display: inline-block;
     }
 
     .hero-content h1 {
       font-size: clamp(2rem, 3vw, 3.5rem);
       font-weight: 800;
-      color: var(--navy);
+      color: #fdfdff;
       line-height: 1.2;
+      margin-bottom: 1rem;
     }
 
     .hero-content h1 span {
-      color: var(--primary-blue);
+      color: #0a73ff;
       border-bottom: 4px solid rgba(10, 115, 255, 0.3);
     }
 
     .hero-content p {
-      color: var(--muted);
-      margin: 1.5rem 0;
-      max-width: 540px;
+      color: rgba(245, 247, 255, 0.82);
+      margin: 1.25rem 0 2rem;
+      max-width: 520px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-btn {
+      border: none;
+      border-radius: 999px;
+      padding: 0.9rem 1.8rem;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-btn.primary {
+      background: linear-gradient(135deg, #02c4d9, #1a76d1);
+      color: #ffffff;
+      box-shadow: 0 15px 30px rgba(2, 196, 217, 0.35);
+    }
+
+    .hero-btn.secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      color: #fdfdff;
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-2px);
     }
 
     .hero-card {
-      border-left: 4px solid var(--primary-blue);
+      border-left: 4px solid #02c4d9;
       padding-left: 1rem;
       margin-bottom: 1.5rem;
     }
 
     .hero-card h6 {
       font-weight: 700;
-      color: var(--navy);
+      color: #fdfdff;
+    }
+    .hero-card small {
+      color: rgba(245, 247, 255, 0.85);
     }
 
     .hero-stats {
@@ -76,97 +177,272 @@
     }
 
     .stat-pill {
-      background-color: #fff;
+      background-color: rgba(255, 255, 255, 0.08);
       border-radius: 16px;
       padding: 0.85rem 1.25rem;
-      box-shadow: 0 12px 25px rgba(8, 23, 49, 0.08);
+      box-shadow: 0 12px 25px rgba(2, 196, 217, 0.2);
       min-width: 150px;
     }
 
     .stat-pill strong {
       display: block;
       font-size: 1.25rem;
-      color: var(--primary-blue);
+      color: #02c4d9;
     }
 
     .stat-pill span {
       font-size: 0.9rem;
-      color: var(--muted);
-    }
-
-    .hero-image {
-      position: relative;
-      text-align: center;
-    }
-
-    .hero-image img {
-      max-width: 90%;
-      border-radius: 24px;
-      box-shadow: 0 25px 60px rgba(8, 23, 49, 0.2);
-    }
-
-    .mini-avatar {
-      position: absolute;
-      right: 10%;
-      bottom: 15%;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-
-    .mini-avatar img {
-      width: 72px;
-      height: 72px;
-      border-radius: 18px;
-      border: 4px solid #fff;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+      color: rgba(245, 247, 255, 0.75);
     }
 
     .swiper-pagination-bullet {
       width: 12px;
       height: 12px;
-      background: rgba(8, 23, 49, 0.2);
+      background: rgba(255, 255, 255, 0.35);
       opacity: 1;
     }
 
     .swiper-pagination-bullet-active {
-      background: var(--primary-blue);
+      background: #02c4d9;
     }
 
     .swiper-button-next,
     .swiper-button-prev {
-      color: var(--navy);
+      color: #02c4d9;
+    }
+
+    @media (max-width: 1400px) {
+      .hero-section,
+      .hero-swiper {
+        min-height: 600px;
+        height: 600px;
+      }
+
+      .hero-slide {
+        min-height: 600px;
+        height: 600px;
+      }
+
+      .hero-content {
+        max-width: 500px;
+      }
+
+      .hero-content h1 {
+        font-size: clamp(1.75rem, 2.2vw, 2.6rem);
+      }
+
+      .hero-content p {
+        max-width: 420px;
+        font-size: 0.9rem;
+        margin-bottom: 1.4rem;
+      }
+
+      .hero-actions {
+        gap: 0.6rem;
+      }
+
+      .hero-btn {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.9rem;
+      }
+
+      .hero-card {
+        margin-bottom: 1.1rem;
+      }
+
+      .stat-pill {
+        padding: 0.65rem 0.95rem;
+        min-width: 120px;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .hero-section,
+      .hero-swiper,
+      .hero-slide {
+        min-height: 520px;
+        height: 520px;
+      }
+
+      .hero-content {
+        max-width: 420px;
+      }
+
+      .hero-content h1 {
+        font-size: clamp(1.6rem, 2.3vw, 2.4rem);
+      }
+
+      .hero-content p {
+        max-width: 360px;
+        font-size: 0.85rem;
+        margin-bottom: 1.2rem;
+      }
+
+      .hero-actions {
+        gap: 0.5rem;
+      }
+
+      .hero-btn {
+        padding: 0.65rem 1.3rem;
+        font-size: 0.85rem;
+      }
+
+      .stat-pill {
+        padding: 0.6rem 0.9rem;
+      }
     }
 
     @media (max-width: 992px) {
       .hero-slide {
-        flex-direction: column;
+        padding: clamp(2rem, 6vw, 3rem) 1.75rem;
+        height: auto;
+        min-height: 520px;
+        background-position: center top;
+      }
+
+      .hero-content {
         text-align: center;
-        gap: 2.5rem;
+        margin: 0 auto;
+        max-width: 600px;
       }
 
       .hero-card {
         margin-left: auto;
         margin-right: auto;
-        text-align: left;
+        text-align: center;
+        border-left: none;
+        border-top: 4px solid #02c4d9;
+        padding-top: 1rem;
       }
 
-      .mini-avatar {
-        right: 3%;
-        bottom: 10%;
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .hero-slide::before {
+        opacity: 0.35;
+        background-position: center bottom;
+      }
+
+    }
+
+    @media (max-width: 768px) {
+      .hero-tag {
+        letter-spacing: 0.25em;
+        font-size: 0.75rem;
+      }
+
+      .hero-content h1 {
+        font-size: clamp(2rem, 8vw, 2.8rem);
+        color: #fefefe;
+      }
+
+      .hero-content p {
+        margin-bottom: 1.5rem;
+        color: rgba(255, 255, 255, 0.87);
+      }
+
+      .hero-content {
+        max-width: 520px;
+      }
+
+      .hero-actions {
+        width: 100%;
+      }
+
+      .hero-btn {
+        flex: 1 1 48%;
+        justify-content: center;
+      }
+
+      .stat-pill {
+        flex: 1 1 45%;
+        min-width: auto;
+        text-align: center;
+      }
+
+    }
+
+    @media (max-width: 992px) {
+      .hero-slide::after {
+        opacity: 0.6;
       }
     }
 
     @media (max-width: 576px) {
-      .hero-card {
-        text-align: center;
-        border-left: none;
-        border-top: 4px solid var(--primary-blue);
-        padding: 1rem 0 0;
+      .hero-section,
+      .hero-swiper {
+        min-height: 600px;
+        height: 600px;
       }
 
-      .hero-image img {
-        max-width: 100%;
+      .hero-slide {
+        padding: 2.5rem 1.5rem;
+        height: auto;
+        min-height: 720px;
+        background-position: center top;
+      }
+
+      .hero-slide::after {
+        opacity: 0.75;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .hero-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .hero-stats {
+        justify-content: center;
+      }
+
+      .hero-slide::before {
+        opacity: 0.25;
+        background-size: clamp(180px, 65vw, 320px);
+      }
+
+      .hero-tag {
+        letter-spacing: 0.18em;
+        font-size: 0.7rem;
+      }
+
+      .hero-content {
+        max-width: 460px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .hero-section,
+      .hero-swiper {
+        min-height: 620px;
+        height: 620px;
+      }
+
+      .hero-slide {
+        height: auto;
+        min-height: 620px;
+      }
+
+      .hero-slide::after {
+        opacity: 0.8;
+      }
+
+      .hero-content h1 {
+        font-size: clamp(1.9rem, 10vw, 2.4rem);
+        color: #ffffff;
+      }
+
+      .hero-content p {
+        color: rgba(255, 255, 255, 0.85);
+      }
+
+      .stat-pill {
+        width: 100%;
       }
     }
   </style>
@@ -175,15 +451,16 @@
   <section class="hero-section">
     <div class="swiper hero-swiper">
       <div class="swiper-wrapper">
-        <div class="swiper-slide hero-slide bg-white">
-          <div class="container">
-            <div class="row align-items-center gy-5">
-              <div class="col-lg-6 hero-content">
-                <h1>We Hospital Doctors Patients <span>Service.</span></h1>
+        <div class="swiper-slide hero-slide hero-bg-1 bg-transparent">
+          <div class="container-fluid">
+            <div class="row justify-content-start gy-4">
+              <div class="col-12 col-xl-8 col-xxl-6 hero-content">
+                <span class="hero-tag">Vivacity Medical Center</span>
+                <h1>We Provide Medical Services That You Can <span>Trust!</span></h1>
                 <p>Medical excellence, compassionate care, and trusted specialists committed to your wellness journey across Vivacity Hospital.</p>
-                <div class="hero-card">
-                  <h6>Receive Medical Service.</h6>
-                  <small>Call us: (+91) 99425 76886</small>
+                <div class="hero-actions">
+                  <button class="hero-btn primary">Get Appointment →</button>
+                  <button class="hero-btn secondary">Contact Now ☎</button>
                 </div>
                 <div class="hero-stats">
                   <div class="stat-pill">
@@ -196,25 +473,19 @@
                   </div>
                 </div>
               </div>
-              <div class="col-lg-6 hero-image">
-                <img src="https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&w=1000&q=80" alt="Doctor at Vivacity Hospital">
-                <div class="mini-avatar">
-                  <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80" alt="Specialist 1">
-                  <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80" alt="Specialist 2">
-                </div>
-              </div>
             </div>
           </div>
         </div>
-        <div class="swiper-slide hero-slide bg-white">
-          <div class="container">
-            <div class="row align-items-center gy-5">
-              <div class="col-lg-6 hero-content">
+        <div class="swiper-slide hero-slide hero-bg-2 bg-transparent">
+          <div class="container-fluid">
+            <div class="row justify-content-start gy-4">
+              <div class="col-12 col-xl-8 col-xxl-6 hero-content">
+                <span class="hero-tag">Critical & Kidney Care</span>
                 <h1>Experts in Kidney & Critical <span>Care.</span></h1>
                 <p>From preventive programs to advanced interventions, Vivacity delivers whole-person care with modern technology and heartfelt guidance.</p>
-                <div class="hero-card">
-                  <h6>24/7 Emergency Line</h6>
-                  <small>Call us: (+91) 94444 22331</small>
+                <div class="hero-actions">
+                  <button class="hero-btn primary">Book Consultation →</button>
+                  <button class="hero-btn secondary">Emergency Line ☎</button>
                 </div>
                 <div class="hero-stats">
                   <div class="stat-pill">
@@ -225,13 +496,6 @@
                     <strong>1.2M</strong>
                     <span>Lives Impacted</span>
                   </div>
-                </div>
-              </div>
-              <div class="col-lg-6 hero-image">
-                <img src="https://images.unsplash.com/photo-1504439468489-c8920d796a29?auto=format&fit=crop&w=1000&q=80" alt="Medical staff">
-                <div class="mini-avatar">
-                  <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=200&q=80" alt="Nurse 1">
-                  <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80" alt="Nurse 2">
                 </div>
               </div>
             </div>
