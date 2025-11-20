@@ -3,31 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NCIL Header</title>
+  <title>Vivacity Header - Professional & Responsive</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
   <style>
-    :root {
-      --nav-blue: #041843;
-      --brand-blue: #0b51b1;
-      --text-dark: #122134;
-      --muted: #5f6777;
-      --cta-solid: #008c6a;
-      --light-bg: #f5f7fc;
-    }
-
-    body {
+    .site-header {
       font-family: 'Inter', sans-serif;
-      background-color: var(--light-bg);
-      margin: 0;
-      color: var(--text-dark);
     }
 
     .site-header .top-strip {
-      background-color: var(--nav-blue);
+      background-color: #041843;
       color: #d7e3ff;
       font-size: 0.92rem;
     }
@@ -104,12 +92,12 @@
     .brand-title {
       font-size: 1.3rem;
       font-weight: 700;
-      color: var(--text-dark);
+      color: #122134;
       display: block;
     }
 
     .brand-copy small {
-      color: var(--brand-blue);
+      color: #0b51b1;
       letter-spacing: 0.18em;
       font-weight: 600;
       font-size: 0.68rem;
@@ -123,7 +111,7 @@
 
     .nav-link {
       font-weight: 500;
-      color: var(--muted);
+      color: #5f6777;
       font-size: 0.9rem;
       padding: 0.6rem 0.65rem !important;
       display: inline-flex;
@@ -136,7 +124,7 @@
     .nav-link:hover,
     .nav-link:focus,
     .nav-link.active {
-      color: var(--brand-blue);
+      color: #0b51b1;
     }
 
     .navbar-nav .dropdown-toggle::after {
@@ -164,19 +152,19 @@
     .dropdown-item {
       font-weight: 500;
       padding: 0.55rem 1.25rem;
-      color: var(--text-dark);
+      color: #122134;
     }
 
     .dropdown-item:hover,
     .dropdown-item:focus {
       background-color: rgba(0, 140, 106, 0.08);
-      color: var(--cta-solid);
+      color: #008c6a;
     }
 
     .lang-switch .btn {
       border-radius: 999px;
       border: 1px solid #dde3f1;
-      color: var(--text-dark);
+      color: #122134;
       font-weight: 500;
       padding: 0.45rem 0.95rem;
       display: inline-flex;
@@ -218,31 +206,383 @@
       background: rgba(4, 24, 67, 0.08);
       padding: 0.35rem 0.55rem;
       border-radius: 8px;
+      transition: all 0.3s ease;
     }
 
-    @media (max-width: 992px) {
-      .navbar-brand {
-        gap: 0.75rem;
+    .navbar-toggler:hover {
+      background: rgba(4, 24, 67, 0.15);
+    }
+
+    .navbar-toggler:focus {
+      box-shadow: 0 0 0 0.2rem rgba(11, 81, 177, 0.15);
+    }
+
+    /* Mobile quick menu */
+    .mobile-quick-menu {
+      display: none;
+      flex: 1;
+      margin: 0 1rem 0 1.5rem;
+      gap: 12px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .mobile-quick-menu::-webkit-scrollbar {
+      display: none;
+    }
+    .mobile-quick-menu a {
+      flex: 1 0 calc(33.333% - 8px);
+      min-width: calc(33.333% - 8px);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 8px;
+      border-radius: 12px;
+      background: transparent;
+      border: none;
+      text-decoration: none;
+      color: #122134;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* Mobile Menu Overlay */
+    .mobile-menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1040;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-menu-overlay.show {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Mobile Menu Top Header - Shows at bottom */
+    .mobile-top-header {
+      display: none;
+      background-color: #041843;
+      color: #d7e3ff;
+      padding: 1.25rem;
+      margin-top: auto;
+      order: 999;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .mobile-top-header .mobile-contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .mobile-top-header .mobile-contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: inherit;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .mobile-top-header .mobile-social-links {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      justify-content: center;
+    }
+
+    .mobile-top-header .mobile-social-links a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f4f6ff;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-top-header .mobile-social-links a:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+    .mobile-top-header .mobile-quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 0.85rem;
+    }
+    .mobile-top-header .mobile-quick-links .quick-link {
+      color: #041843;
+      background: #fff;
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+    .mobile-top-header .mobile-quick-links .quick-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Language Selector Improvements */
+    .lang-switch .dropdown-menu {
+      min-width: 160px;
+      border-radius: 10px;
+      padding: 0.5rem 0;
+    }
+
+    .lang-switch .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1rem;
+    }
+
+    .lang-switch .dropdown-item.active {
+      background-color: rgba(0, 140, 106, 0.1);
+      color: #008c6a;
+      font-weight: 600;
+    }
+
+    .lang-switch .lang-flag {
+      font-size: 1.2rem;
+    }
+
+    /* Mobile Menu Language Selector */
+    .mobile-lang-selector {
+      display: none;
+      padding: 0 1.25rem 1.25rem;
+      background: transparent;
+      border-top: none;
+      border-bottom: none;
+    }
+
+    .mobile-lang-selector .lang-toggle-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1rem;
+      background: linear-gradient(120deg, #f8f9fa 0%, #e9ecef 100%);
+      border: 2px solid #dee2e6;
+      border-radius: 8px;
+      color: #122134;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-lang-selector .lang-toggle-btn:hover {
+      background: linear-gradient(120deg, #e9ecef 0%, #dee2e6 100%);
+      border-color: #0b51b1;
+      color: #0b51b1;
+    }
+
+    .mobile-lang-selector .lang-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      right: 0;
+      background: #fff;
+      border: 2px solid #dee2e6;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      z-index: 1000;
+      overflow: hidden;
+    }
+
+    .mobile-lang-selector .language-toggle-wrapper.active .lang-dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .mobile-lang-selector .lang-option {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #f0f0f0;
+      color: #122134;
+      font-weight: 500;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .mobile-lang-selector .lang-option:last-child {
+      border-bottom: none;
+    }
+
+    .mobile-lang-selector .lang-option:hover {
+      background: rgba(11, 81, 177, 0.08);
+      color: #0b51b1;
+    }
+
+    .mobile-lang-selector .lang-option.active {
+      background: rgba(11, 81, 177, 0.1);
+      color: #0b51b1;
+    }
+
+    /* Responsive Improvements */
+    @media (max-width: 991.98px) {
+      .top-strip {
+        display: none !important;
+      }
+
+      .navbar-collapse {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 85%;
+        max-width: 400px;
+        height: 100vh;
+        background: #fff;
+        z-index: 1050;
+        overflow-y: auto;
+        transition: right 0.3s ease;
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+      }
+
+      .navbar-collapse.show {
+        right: 0;
+      }
+
+      .navbar-nav {
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        order: 0;
+      }
+
+      .nav-item {
+        width: 100%;
+        margin: 0;
+      }
+
+      .nav-link {
+        padding: 0.875rem 1.25rem !important;
+        width: 100%;
+        border-bottom: 1px solid #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-item:last-child .nav-link {
+        border-bottom: none;
+      }
+
+      .dropdown-menu {
+        position: static !important;
+        float: none;
+        width: 100%;
+        margin: 0;
+        background-color: #f8f9fa;
+        border: none;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+      }
+
+      .dropdown-item {
+        padding: 0.75rem 1.25rem 0.75rem 2.5rem;
+        border-bottom: 1px solid #e9ecef;
+      }
+
+      .dropdown-item:last-child {
+        border-bottom: none;
       }
 
       .nav-actions {
         width: 100%;
-        justify-content: flex-start;
-        margin-top: 1rem;
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 1.25rem 1.25rem 0.75rem;
+        border-top: 1px solid #ecf0f5;
+        border-bottom: none;
+        margin: 0;
+        order: 1;
+        background: #fff;
+      }
+
+      .btn-cta {
+        width: 100%;
+        justify-content: center;
+        margin: 0;
+        box-shadow: none;
+      }
+
+      .mobile-lang-selector {
+        display: block;
+        order: 2;
+        margin: 0;
+        padding-top: 0.5rem;
+        background: #fff;
+        border-top: none;
+      }
+
+      .mobile-top-header {
+        display: block;
+        order: 3;
+        margin-top: 0;
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+      }
+
+      .lang-switch {
+        display: none;
+      }
+
+      .mobile-quick-menu {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
       }
     }
 
     @media (max-width: 576px) {
-      .top-strip .container {
-        text-align: center;
+      .navbar-brand {
+        gap: 0.75rem;
       }
 
-      .top-strip .divider {
-        display: none;
+      .brand-title {
+        font-size: 1.1rem;
       }
 
-      .social-links {
-        justify-content: center;
+      .brand-mark {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
       }
     }
   </style>
@@ -282,9 +622,15 @@
             <small>HOSPITAL</small>
           </div>
         </a>
+        <div class="mobile-quick-menu" aria-label="Quick mobile links">
+          <a href="#find-doctor">Home</a>
+          <a href="#services">Services</a>
+          <a href="#lab-reports">Contacts</a>
+        </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
         <div class="collapse navbar-collapse" id="mainNav">
           <ul class="navbar-nav ms-auto mb-3 mb-lg-0 align-items-lg-center">
             <li class="nav-item"><a class="nav-link active" href="#">Find Doctor</a></li>
@@ -330,12 +676,21 @@
             <div class="dropdown lang-switch">
               <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="bi bi-globe2"></i>
-                EN
+                <span class="lang-text">EN</span>
               </button>
               <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="#">English</a></li>
-                <li><a class="dropdown-item" href="#">Hindi</a></li>
-                <li><a class="dropdown-item" href="#">Bengali</a></li>
+                <li><a class="dropdown-item active" href="#" data-lang="english">
+                  <span class="lang-flag">🇬🇧</span>
+                  English
+                </a></li>
+                <li><a class="dropdown-item" href="#" data-lang="hindi">
+                  <span class="lang-flag">🇮🇳</span>
+                  Hindi
+                </a></li>
+                <li><a class="dropdown-item" href="#" data-lang="bengali">
+                  <span class="lang-flag">🇧🇩</span>
+                  Bengali
+                </a></li>
               </ul>
             </div>
             <button class="btn-cta" type="button">
@@ -343,11 +698,227 @@
               Book Appointment
             </button>
           </div>
+          <!-- Mobile Language Selector -->
+          <div class="mobile-lang-selector">
+            <div class="language-toggle-wrapper position-relative">
+              <button class="lang-toggle-btn" type="button" data-lang="english">
+                <i class="bi bi-globe2"></i>
+                <span class="lang-text">English</span>
+                <i class="bi bi-chevron-down"></i>
+              </button>
+              <div class="lang-dropdown">
+                <button class="lang-option active" data-lang="english" type="button">
+                  <span class="lang-flag">🇬🇧</span>
+                  <span>English</span>
+                  <i class="bi bi-check lang-check"></i>
+                </button>
+                <button class="lang-option" data-lang="hindi" type="button">
+                  <span class="lang-flag">🇮🇳</span>
+                  <span>हिंदी</span>
+                  <i class="bi bi-check lang-check"></i>
+                </button>
+                <button class="lang-option" data-lang="bengali" type="button">
+                  <span class="lang-flag">🇧🇩</span>
+                  <span>বাংলা</span>
+                  <i class="bi bi-check lang-check"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Mobile Top Header - Shows at bottom after navigation -->
+          <div class="mobile-top-header">
+            <div class="mobile-contact-info">
+              <a href="mailto:demo@example.com" class="mobile-contact-link">
+                <i class="bi bi-envelope"></i>
+                demo@example.com
+              </a>
+              <a href="#" class="mobile-contact-link">
+                <i class="bi bi-geo-alt"></i>
+                15/K, Dhaka London City, LOT
+              </a>
+            </div>
+            <div class="mobile-social-links">
+              <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a>
+              <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            </div>
+            <div class="mobile-quick-links mt-3">
+              <a href="/services/emergency" class="quick-link">Emergency</a>
+              <a href="/doctor" class="quick-link">Find Doctor</a>
+              <a href="/billing" class="quick-link">Pay Bill</a>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
   </header>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const navbarCollapse = document.getElementById('mainNav');
+      const mobileOverlay = document.getElementById('mobileMenuOverlay');
+      const navbarToggler = document.querySelector('.navbar-toggler');
+      let currentLang = 'english';
+
+      // Mobile menu overlay toggle
+      if (navbarCollapse && mobileOverlay) {
+        navbarCollapse.addEventListener('show.bs.collapse', function() {
+          mobileOverlay.classList.add('show');
+          document.body.style.overflow = 'hidden';
+        });
+
+        navbarCollapse.addEventListener('hide.bs.collapse', function() {
+          mobileOverlay.classList.remove('show');
+          document.body.style.overflow = '';
+        });
+
+        // Close menu when clicking overlay
+        mobileOverlay.addEventListener('click', function() {
+          const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+          if (bsCollapse) {
+            bsCollapse.hide();
+          }
+        });
+      }
+
+      // Language selector functionality - Desktop
+      const desktopLangItems = document.querySelectorAll('.lang-switch .dropdown-item');
+      const desktopLangBtn = document.querySelector('.lang-switch .dropdown-toggle .lang-text');
+
+      desktopLangItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          const lang = this.getAttribute('data-lang');
+          
+          // Update active state
+          desktopLangItems.forEach(i => i.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Update button text
+          if (desktopLangBtn) {
+            if (lang === 'english') {
+              desktopLangBtn.textContent = 'EN';
+            } else if (lang === 'hindi') {
+              desktopLangBtn.textContent = 'HI';
+            } else if (lang === 'bengali') {
+              desktopLangBtn.textContent = 'BN';
+            }
+          }
+          
+          currentLang = lang;
+          updateMobileLangSelector(lang);
+        });
+      });
+
+      // Language selector functionality - Mobile
+      const mobileLangToggle = document.querySelector('.mobile-lang-selector .lang-toggle-btn');
+      const mobileLangWrapper = document.querySelector('.mobile-lang-selector .language-toggle-wrapper');
+      const mobileLangOptions = document.querySelectorAll('.mobile-lang-selector .lang-option');
+
+      if (mobileLangToggle && mobileLangWrapper) {
+        mobileLangToggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          mobileLangWrapper.classList.toggle('active');
+        });
+
+        mobileLangOptions.forEach(option => {
+          option.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const lang = this.getAttribute('data-lang');
+            
+            // Update active state
+            mobileLangOptions.forEach(opt => opt.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Update toggle button
+            const langText = mobileLangWrapper.querySelector('.lang-text');
+            if (langText) {
+              if (lang === 'english') {
+                langText.textContent = 'English';
+              } else if (lang === 'hindi') {
+                langText.textContent = 'हिंदी';
+              } else if (lang === 'bengali') {
+                langText.textContent = 'বাংলা';
+              }
+            }
+            
+            currentLang = lang;
+            updateDesktopLangSelector(lang);
+            mobileLangWrapper.classList.remove('active');
+          });
+        });
+      }
+
+      // Sync language selectors
+      function updateMobileLangSelector(lang) {
+        const mobileOptions = document.querySelectorAll('.mobile-lang-selector .lang-option');
+        const mobileToggle = document.querySelector('.mobile-lang-selector .lang-text');
+        
+        mobileOptions.forEach(opt => {
+          opt.classList.remove('active');
+          if (opt.getAttribute('data-lang') === lang) {
+            opt.classList.add('active');
+          }
+        });
+        
+        if (mobileToggle) {
+          if (lang === 'english') {
+            mobileToggle.textContent = 'English';
+          } else if (lang === 'hindi') {
+            mobileToggle.textContent = 'हिंदी';
+          } else if (lang === 'bengali') {
+            mobileToggle.textContent = 'বাংলা';
+          }
+        }
+      }
+
+      function updateDesktopLangSelector(lang) {
+        const desktopOptions = document.querySelectorAll('.lang-switch .dropdown-item');
+        const desktopToggle = document.querySelector('.lang-switch .dropdown-toggle .lang-text');
+        
+        desktopOptions.forEach(opt => {
+          opt.classList.remove('active');
+          if (opt.getAttribute('data-lang') === lang) {
+            opt.classList.add('active');
+          }
+        });
+        
+        if (desktopToggle) {
+          if (lang === 'english') {
+            desktopToggle.textContent = 'EN';
+          } else if (lang === 'hindi') {
+            desktopToggle.textContent = 'HI';
+          } else if (lang === 'bengali') {
+            desktopToggle.textContent = 'BN';
+          }
+        }
+      }
+
+      // Close mobile language dropdown when clicking outside
+      document.addEventListener('click', function(e) {
+        if (mobileLangWrapper && !mobileLangWrapper.contains(e.target)) {
+          mobileLangWrapper.classList.remove('active');
+        }
+      });
+
+      // Close mobile menu on ESC key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+            const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+            if (bsCollapse) {
+              bsCollapse.hide();
+            }
+          }
+          if (mobileLangWrapper) {
+            mobileLangWrapper.classList.remove('active');
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>
